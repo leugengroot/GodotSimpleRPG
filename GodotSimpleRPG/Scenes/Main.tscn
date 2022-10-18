@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Entities/Player/player_frames/player_right_walk_1.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://GUI/ManaBar.gd" type="Script" id=36]
 [ext_resource path="res://Fonts/Schrîdinger.ttf" type="DynamicFontData" id=37]
 [ext_resource path="res://GUI/potions.png" type="Texture" id=38]
+[ext_resource path="res://Entities/SkeletonSpawner/SkeletonSpawner.tscn" type="PackedScene" id=39]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -155,6 +156,7 @@ script = ExtResource( 2 )
 [node name="Sprite" type="AnimatedSprite" parent="Player"]
 frames = SubResource( 2 )
 animation = "down_idle"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -290,6 +292,9 @@ margin_bottom = 16.0
 custom_fonts/font = SubResource( 7 )
 text = "0"
 align = 2
+
+[node name="SkeletonSpawner" parent="." instance=ExtResource( 39 )]
+spawn_area = Rect2( 50, 150, 200, 100 )
 
 [connection signal="player_stats_changed" from="Player" to="CanvasLayer/Health" method="_on_Player_player_stats_changed"]
 [connection signal="player_stats_changed" from="Player" to="CanvasLayer/Mana" method="_on_Player_player_stats_changed"]
